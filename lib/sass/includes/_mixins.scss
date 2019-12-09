@@ -1,0 +1,166 @@
+/*
+   * Button mixin
+*/
+@mixin btnColor($type: primary, $outline: false, $neutral: false) {
+  // Primary button colors
+  @if $type== primary {
+    @if $outline== true {
+      background: none;
+
+      @include themify() {
+        color: themed("primary");
+        border: solid 1px themed("primary");
+      }
+
+      &:hover {
+        color: #fff;
+
+        @include themify() {
+          background: themed("primary");
+        }
+      }
+    } @else if $neutral== true {
+      background: none;
+      border: none;
+
+      @include themify() {
+        color: themed("primary");
+      }
+
+      &:hover {
+        @include themify() {
+          background: darken(themed("body"), 10%);
+        }
+      }
+    } @else {
+      color: #fff;
+
+      @include themify() {
+        background: themed("primary");
+        box-shadow: 0 2px 25px transparentize(themed("primary"), 0.5);
+      }
+
+      &:hover {
+        @include themify() {
+          background: darken(themed("primary"), 10%);
+        }
+      }
+
+      &:active {
+        @include themify() {
+          box-shadow: 0 2px 25px transparentize(themed("primary"), 0.2);
+        }
+      }
+
+      &::before,
+      &::after {
+        @include themify() {
+          background-image: radial-gradient(
+              circle,
+              themed("primary") 20%,
+              transparent 20%
+            ),
+            radial-gradient(
+              circle,
+              transparent 20%,
+              themed("primary") 20%,
+              transparent 30%
+            ),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%),
+            radial-gradient(
+              circle,
+              transparent 10%,
+              themed("primary") 15%,
+              transparent 20%
+            ),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%),
+            radial-gradient(circle, themed("primary") 20%, transparent 20%);
+        }
+      }
+    }
+  }
+
+  // Secondary button colors
+  @else if $type== secondary {
+    @if $outline== true {
+      background: none;
+
+      @include themify() {
+        color: themed("secondary");
+        border: solid 1px themed("secondary");
+      }
+
+      &:hover {
+        color: #fff;
+
+        @include themify() {
+          background: themed("secondary");
+        }
+      }
+    } @else if $neutral== true {
+      background: none;
+      border: none;
+
+      @include themify() {
+        color: themed("secondary");
+      }
+
+      &:hover {
+        @include themify() {
+          background: darken(themed("body"), 10%);
+        }
+      }
+    } @else {
+      color: #fff;
+
+      @include themify() {
+        background: themed("secondary");
+        box-shadow: 0 2px 25px transparentize(themed("secondary"), 0.5);
+      }
+
+      &:hover {
+        @include themify() {
+          background: darken(themed("secondary"), 10%);
+        }
+      }
+
+      &:active {
+        @include themify() {
+          box-shadow: 0 2px 25px transparentize(themed("secondary"), 0.2);
+        }
+      }
+
+      &::before,
+      &::after {
+        @include themify() {
+          background-image: radial-gradient(
+              circle,
+              themed("secondary") 20%,
+              transparent 20%
+            ),
+            radial-gradient(
+              circle,
+              transparent 20%,
+              themed("secondary") 20%,
+              transparent 30%
+            ),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%),
+            radial-gradient(
+              circle,
+              transparent 10%,
+              themed("secondary") 15%,
+              transparent 20%
+            ),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%),
+            radial-gradient(circle, themed("secondary") 20%, transparent 20%);
+        }
+      }
+    }
+  }
+}

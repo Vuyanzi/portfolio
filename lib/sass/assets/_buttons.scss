@@ -1,0 +1,191 @@
+.btn {
+  padding: 15px 30px;
+  position: relative;
+
+  display: inline-block;
+
+  outline: none;
+  border: none;
+
+  font-family: "montserrat";
+  text-decoration: none;
+  text-align: center;
+
+  vertical-align: middle;
+  border-radius: 5px;
+
+  appearance: none;
+
+  cursor: pointer;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s !important;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    display: none;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    background-repeat: no-repeat;
+    transition: all ease-in-out 0.5s !important;
+  }
+
+  &::before {
+    top: -75%;
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%,
+      15% 15%, 10% 10%, 18% 18%;
+  }
+
+  &::after {
+    bottom: -75%;
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%,
+      20% 20%;
+  }
+
+  &.animate::before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+  }
+
+  &.animate::after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+  }
+
+  /* Button modifiers */
+
+  // large button
+  &--lg {
+    @extend .btn;
+    padding: 18px 36px;
+  }
+
+  // small button
+  &--small {
+    @extend .btn;
+    padding: 6px 12px;
+  }
+
+  // full width button
+  &--fit {
+    @extend .btn;
+    display: block;
+    width: 100%;
+  }
+
+  // half width button
+  &--half-fit {
+    @extend .btn;
+    margin: auto;
+    display: block;
+    width: 50%;
+  }
+
+  // rounded button
+  &--rounded {
+    @extend .btn;
+    border-radius: 25px;
+  }
+
+  // edgy button
+  &--edgy {
+    @extend .btn;
+    border-radius: 0;
+  }
+
+  // Disabled buttons
+  &--disabled,
+  &:disabled {
+    @extend .btn;
+    opacity: 0.5;
+    color: #fff;
+    background: #999;
+
+    &:hover {
+      background: #999;
+    }
+  }
+
+  /* Button types */
+
+  // primary
+  &-primary {
+    @extend .btn;
+
+    @include btnColor(primary);
+
+    // outlined button
+    &--outline {
+      @extend .btn-primary;
+
+      @include btnColor(primary, true);
+    }
+
+    // text button
+    &--neutral {
+      @extend .btn-primary;
+
+      @include btnColor(primary, false, true);
+    }
+  }
+
+  // secondary button
+  &-secondary {
+    @extend .btn;
+
+    @include btnColor(secondary);
+
+    // outlined button
+    &--outline {
+      @extend .btn-secondary;
+
+      @include btnColor(secondary, true);
+    }
+
+    // text button
+    &--neutral {
+      @extend .btn-secondary;
+
+      @include btnColor(secondary, false, true);
+    }
+  }
+
+  // icon button
+  &-icon {
+    @extend .btn;
+
+    padding: 0%;
+    height: 40px;
+    width: 40px;
+    flex: 0 0 40px;
+    line-height: 40px;
+
+    &--bg {
+      @extend .btn-icon;
+
+      &:hover {
+        @include themify() {
+          background: themed("border");
+        }
+      }
+
+      &:active {
+        @include themify() {
+          box-shadow: 0 0 0 4px themed("shadow");
+        }
+      }
+    }
+
+    // circular button
+    &--circle {
+      @extend .btn-icon;
+      border-radius: 50%;
+    }
+  }
+}

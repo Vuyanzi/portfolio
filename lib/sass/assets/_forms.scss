@@ -1,0 +1,253 @@
+// Input wrappers
+.input-wrapper {
+  margin: 10px auto;
+  width: 100%;
+
+  &--outer {
+    @extend .input-wrapper;
+    display: flex;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &--outer-chkbox {
+    @extend .input-wrapper;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &--inner {
+    @extend .input-wrapper;
+
+    margin: 20px 0;
+
+    &-dent {
+      @extend .input-wrapper--inner;
+      margin-right: 10px;
+    }
+  }
+
+  &--icon {
+    @extend .input-wrapper;
+
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+
+    border-radius: 8px;
+
+    transition: 0.3s ease !important;
+    overflow: hidden;
+
+    @include themify() {
+      border: solid 1px themed("text");
+    }
+
+    input,
+    label {
+      border: none !important;
+
+      &:focus {
+        @include themify() {
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    &:focus-within,
+    &:active {
+      @include themify() {
+        border-color: themed("primary");
+        box-shadow: 0 0 0 3px lighten(themed("primary"), 10%);
+      }
+    }
+
+    .fas,
+    .far {
+      padding: 0 10px;
+      // background: #cccc;
+
+      @include themify() {
+        color: ("text");
+      }
+    }
+  }
+
+  &--chkbox {
+    @extend .input-wrapper;
+
+    margin: 1.5pc auto;
+    display: flex;
+    text-align: left;
+    align-items: center;
+
+    .label {
+      font-size: 0.8em;
+    }
+
+    .input {
+      margin: 0% 10px;
+      width: unset;
+      order: -1;
+    }
+  }
+
+  &--error {
+    @extend .input-wrapper;
+
+    input,
+    [class^="input-wrapper"] {
+      @include themify() {
+        border-color: themed("danger");
+      }
+    }
+
+    .error {
+      font-size: 0.7em;
+
+      @include themify() {
+        color: themed("danger");
+      }
+    }
+  }
+}
+
+// Label and error
+.label,
+.msg {
+  line-height: 1.5em;
+}
+
+.label {
+  font-size: 0.9em;
+
+  &-input {
+    @extend .input;
+
+    text-align: center;
+    font-size: 0.8em;
+  }
+}
+
+.msg {
+  font-size: 0.7em;
+
+  &-error {
+    @extend .msg;
+
+    display: none;
+
+    @include themify() {
+      color: themed("danger");
+    }
+
+    &.on {
+      display: block;
+    }
+  }
+
+  &-foo {
+    @extend .msg;
+    margin: 1.5px 0;
+
+    &--center {
+      @extend .msg-foo;
+      text-align: center;
+    }
+
+    &--right {
+      @extend .msg-foo;
+      text-align: right;
+    }
+  }
+}
+
+// Input fields
+.input,
+.label-input {
+  display: block;
+  width: 100%;
+  padding: 15px 10px;
+
+  background: none;
+  border-radius: 8px;
+
+  transition: 0.3s ease !important;
+  outline: none;
+
+  @include themify() {
+    color: themed("text");
+    border: solid 1px themed("text");
+  }
+
+  &::placeholder {
+    letter-spacing: 0.5px;
+    font-family: "montserrat";
+
+    @include themify() {
+      color: themed("text");
+    }
+  }
+
+  &:focus {
+    @include themify() {
+      border-color: themed("primary");
+      box-shadow: 0 0 0 3px lighten(themed("primary"), 10%);
+    }
+  }
+
+  &[type="radio"],
+  &[type="checkbox"] {
+    &:focus {
+      border: none;
+    }
+  }
+
+  &[type="file"] {
+    display: none;
+  }
+
+  &--fill {
+    @extend .input;
+
+    @include themify() {
+      background: themed("shadow");
+      border: solid 1px themed("border");
+    }
+  }
+
+  &--flat {
+    @extend .input;
+    border: none !important;
+
+    @include themify() {
+      background: themed("shadow");
+    }
+  }
+
+  &--edgy {
+    @extend .input;
+    border-radius: 0;
+  }
+
+  &--rounded {
+    @extend .input;
+    border-radius: 25px;
+  }
+
+  &--line {
+    @extend .input;
+    border-radius: 0;
+    border: none;
+    border-bottom: solid 1px #888;
+    background: transparent;
+  }
+}
+
+.label-input {
+  cursor: pointer;
+}

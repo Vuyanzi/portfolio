@@ -1,0 +1,123 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Dark mode transition
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: background 0.3s, color 0s;
+}
+
+body {
+  font-family: "montserrat";
+
+  @include themify() {
+    color: themed("text");
+    background: themed("body");
+  }
+}
+
+// Logo styling
+.logo {
+  h1 {
+    font-family: "gabriola" !important;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+
+    &::after {
+      display: none !important;
+    }
+  }
+
+  a {
+    font-size: 1.25em;
+    text-decoration: none;
+
+    @include themify() {
+      color: themed("primary") !important;
+    }
+  }
+}
+
+// Typography resets
+h1 {
+  font-family: "baskerville";
+  font-weight: normal;
+  font-style: normal;
+
+  &::after {
+    content: "";
+    margin-top: 15px;
+    display: block;
+    height: 2px;
+    width: 80px;
+    border-radius: 25px;
+
+    @include themify() {
+      background: themed("text");
+    }
+  }
+
+  &.center {
+    margin: auto;
+    text-align: center;
+
+    &::after {
+      margin: auto;
+      margin-top: 15px;
+    }
+  }
+}
+
+h2,
+h3 {
+  font-family: "philosopher";
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  @include themify() {
+    color: themed("text");
+  }
+}
+
+p,
+a {
+  font-size: 0.9em;
+  line-height: 1.8em;
+}
+
+// Layout resets
+img {
+  width: 100%;
+}
+
+hr {
+  margin: 10px 0 15px 0;
+
+  @include themify() {
+    border-top: solid 1px themed("border");
+  }
+}
+
+.border {
+  @include themify() {
+    border: solid 1px themed("border");
+  }
+}
+
+.shadow {
+  @include themify() {
+    box-shadow: 0 2px 10px -10px themed("shadow");
+  }
+}

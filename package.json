@@ -1,0 +1,37 @@
+{
+  "name": "emmanuel-karanja",
+  "version": "1.0.0",
+  "description": "Emmanuel Karanja",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekaranja306/Portfolio-design.git"
+  },
+  "keywords": [
+    "emmanuel",
+    "keka",
+    "ekaranja",
+    "karanja"
+  ],
+  "author": "Emmanuel Karanja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekaranja306/Portfolio-design/issues"
+  },
+  "homepage": "https://github.com/ekaranja306/Portfolio-design#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^1.2.0",
+    "gulp-uglifycss": "^1.1.0"
+  }
+}

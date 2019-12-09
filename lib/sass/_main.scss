@@ -1,0 +1,826 @@
+// Header
+.header {
+  margin: auto;
+  padding: 20px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: $max-width;
+  overflow: hidden;
+
+  &-wrapper {
+    position: relative;
+
+    &.active {
+      @include themify() {
+        background: themed("el-bg");
+      }
+    }
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &.active {
+      @include themify() {
+        background: themed("el-bg");
+      }
+    }
+  }
+
+  .menu {
+    margin: auto;
+  }
+
+  .menu ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+
+    a {
+      margin: 0 20px;
+      display: block;
+      text-decoration: none;
+
+      @include themify() {
+        color: themed("primary");
+      }
+    }
+  }
+
+  .mode-ctrl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 140px;
+
+    label {
+      cursor: pointer;
+    }
+
+    .theme-toggle[type="checkbox"] {
+      display: none;
+    }
+
+    .theme-toggle-label {
+      width: 40px;
+      height: 20px;
+      background: #ccc;
+      display: block;
+      border-radius: 100px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border-radius: 90px;
+        transition: 0.3s !important;
+      }
+    }
+
+    .theme-toggle:checked + .theme-toggle-label {
+      @include themify() {
+        background: themed("primary");
+      }
+    }
+
+    .theme-toggle:checked + .theme-toggle-label:after {
+      left: calc(100% - 5px);
+      transform: translateX(-100%);
+    }
+
+    .theme-toggle-label:active:after {
+      width: 30px;
+    }
+  }
+
+  .bars {
+    padding: 5px;
+    height: 35px;
+    width: 35px;
+    position: relative;
+
+    display: none;
+    justify-content: space-between;
+    flex-direction: column;
+
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:active {
+      @include themify() {
+        background: themed("shadow");
+      }
+    }
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      border-radius: 25px;
+
+      transition: all 0.2s linear;
+
+      @include themify() {
+        background: themed("text");
+      }
+
+      &:nth-child(odd) {
+        width: 50%;
+      }
+
+      &:nth-child(3) {
+        align-self: flex-end;
+      }
+    }
+
+    &.active {
+      .bar {
+        &:nth-child(1) {
+          transform-origin: top left;
+          transform: translate(4px, 2px) rotate(45deg);
+        }
+
+        &:nth-child(even) {
+          transform-origin: top right;
+          transform: translate(-5px, -9px) rotate(-45deg);
+        }
+
+        &:nth-child(3) {
+          transform-origin: bottom right;
+          transform: translate(-4px, -3px) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  // @media (prefers-color-scheme: dark) {
+  //   .nav {
+  //     width: unset;
+  //   }
+
+  //   .mode-ctrl {
+  //     display: none;
+  //   }
+  // }
+
+  @media (max-width: $tablet) {
+    .nav {
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      right: 0%;
+      flex-direction: column;
+      display: none;
+
+      @include themify() {
+        border-bottom: solid 1px themed("border");
+      }
+
+      &.active {
+        display: flex;
+
+        @include themify() {
+          box-shadow: 0 10px 10px themed("shadow");
+        }
+      }
+
+      .mode-ctrl {
+        padding: 15px 35px;
+        justify-content: flex-start;
+        width: 100%;
+
+        label[for="themeToggle"] {
+          margin-right: 20px;
+        }
+
+        @include themify() {
+          border-top: solid 1px themed("border");
+        }
+      }
+    }
+
+    .menu {
+      padding: 0 30px;
+      width: 100%;
+    }
+
+    .menu ul {
+      align-items: flex-start;
+      flex-direction: column;
+
+      a {
+        margin: 5px 0;
+        padding: 5px;
+      }
+
+      li {
+        width: 100%;
+      }
+    }
+
+    .bars {
+      display: inline-flex;
+    }
+  }
+}
+
+// Content/section-wrapper
+.content {
+  margin: auto;
+  padding: 20px;
+  max-width: $max-width;
+  overflow: hidden;
+
+  // Section common styling
+  .about,
+  .skills,
+  .projects,
+  .contact,
+  .blog {
+    margin: 30px auto;
+    padding: 0 50px;
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: $tablet-lc) {
+      padding: 0 20px;
+    }
+
+    @media (max-width: $mobile-lc) {
+      padding: 0px;
+    }
+  }
+
+  // Home section
+  .home {
+    padding: 20px 50px;
+    height: 85vh;
+    max-height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .author {
+      &-name {
+        font-size: 0.9em;
+      }
+
+      &-title {
+        margin: 10px 0;
+        font-size: 1.5em;
+        letter-spacing: 1px;
+      }
+
+      &-bio {
+        margin: 20px 0;
+      }
+
+      &-accounts ul {
+        padding: 10px;
+        max-width: 300px;
+
+        list-style-type: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .btn {
+          @include themify() {
+            border: solid 1px themed("border");
+          }
+        }
+      }
+
+      &-avatar {
+        margin: auto;
+        height: 300px;
+        width: 300px;
+        flex: 0 0 300px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        @include themify() {
+          background: themed("primary");
+          border: solid 20px darken(themed("border"), 5%);
+          box-shadow: 0 0 0 20px themed("shadow");
+        }
+      }
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+
+      a {
+        display: block;
+        margin-right: 50px;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+      height: unset;
+      max-height: unset;
+
+      .author {
+        &-title {
+          font-size: 1.5em;
+          letter-spacing: 0;
+        }
+
+        &-avatar {
+          margin: 20px auto 50px;
+          order: -1;
+        }
+      }
+    }
+
+    @media (max-width: $mobile-lc) {
+      margin-bottom: 50px;
+      padding: 0px;
+
+      .actions {
+        a {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  // About section
+  .about {
+    &-summary {
+      max-width: 500px;
+    }
+
+    &-illustration {
+      margin: auto;
+      max-width: 400px;
+    }
+
+    .services {
+      margin: 30px auto;
+
+      h3 {
+        @include themify() {
+          color: themed("primary");
+        }
+      }
+    }
+
+    .author {
+      &-about {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      &-services {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+
+        .service-card {
+          margin: 20px;
+          padding: 20px;
+          max-width: 400px;
+          border-radius: 25px;
+
+          @include themify() {
+            background: themed("el-bg");
+            border: solid 1px themed("border");
+            box-shadow: 0 0 20px themed("shadow");
+          }
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      &-summary {
+        max-width: unset;
+      }
+
+      &-illustration {
+        margin: 20px auto;
+      }
+
+      .author {
+        &-about {
+          flex-direction: column;
+        }
+      }
+    }
+
+    @media (max-width: $mobile-lc) {
+      .author {
+        &-services {
+          flex-direction: column;
+
+          .service-card {
+            margin: 20px auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  // Skills
+  .skills {
+    display: flex;
+    align-items: center;
+
+    &-illustration {
+      margin: auto;
+      width: 400px;
+    }
+
+    .set {
+      margin-bottom: 20px;
+    }
+  }
+
+  // Projects section
+  .projects {
+    .author {
+      &-projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .project {
+          margin: 20px;
+          position: relative;
+          height: 250px;
+          max-width: 350px;
+          border-radius: 25px;
+          overflow: hidden;
+
+          img {
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+          }
+
+          &:hover {
+            img {
+              transform: scale(1.1);
+            }
+
+            .project-summary {
+              opacity: 1;
+              visibility: 1;
+              transform: scale(1);
+            }
+          }
+
+          &-summary {
+            padding: 20px;
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+
+            text-align: center;
+            color: #fff;
+
+            opacity: 0;
+            visibility: 0;
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+
+            @include themify() {
+              background: transparentize(themed("primary"), 0.2);
+            }
+
+            &:hover {
+              .languages,
+              .description,
+              .action {
+                opacity: 1;
+              }
+
+              .languages,
+              .action {
+                transform: translateY(0);
+              }
+            }
+
+            .languages,
+            .description,
+            .action {
+              opacity: 0;
+              transition: all 0.3s ease-in-out;
+              transition-delay: 0.2s;
+            }
+
+            .languages {
+              font-family: "philosopher";
+              font-weight: bold;
+              transform: translateY(-20px);
+            }
+
+            .description {
+              margin: 20px 0;
+              font-size: 0.85em;
+              line-height: 1.5em;
+            }
+
+            .action {
+              transform: translateY(20px);
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      .author {
+        &-projects {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      .author {
+        &-projects {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // Contact section
+  .contact {
+    .author {
+      &-contact {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      &-contact-form {
+        .btn {
+          margin-top: 30px;
+        }
+      }
+
+      &-contact-links {
+        margin: auto;
+
+        .contact-card {
+          margin: 20px 0;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+
+          .icon {
+            margin-right: 20px;
+            height: 60px;
+            width: 60px;
+            flex: 0 0 60px;
+
+            font-size: 1.3em;
+
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+
+            @include themify() {
+              color: themed("primary");
+              border: solid 1px themed("primary");
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $mobile-lc) {
+      .author {
+        &-contact {
+          flex-direction: column;
+        }
+
+        &-contact-form,
+        &-contact-links {
+          width: 100%;
+        }
+
+        &-contact-links {
+          order: -1;
+        }
+      }
+    }
+  }
+
+  // Blog section
+  .blog {
+    .author-blogs {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .card {
+      margin: 20px;
+      padding: 20px;
+      width: 300px;
+      border-radius: 25px;
+
+      @include themify() {
+        background: themed("el-bg");
+        border: solid 1px themed("border");
+        box-shadow: 0 0 20px themed("shadow");
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline dotted;
+        }
+      }
+
+      h1::after {
+        display: none;
+      }
+
+      &-image {
+        height: 200px;
+        border-radius: 25px;
+        overflow: hidden;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      &-details {
+        margin-top: 20px;
+      }
+
+      &-time {
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      .author-blogs {
+        flex-flow: row wrap;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      .author-blogs {
+        flex-direction: column;
+      }
+
+      .card {
+        margin: 15px auto;
+        width: 100%;
+      }
+    }
+  }
+
+  // Blog post page
+  .blog-post {
+    margin: auto;
+    max-width: 1240px;
+
+    a {
+      text-decoration: none;
+      @include themify() {
+        border-bottom: solid 2px themed("primary");
+      }
+    }
+
+    &-title {
+      font-size: 1.5em;
+    }
+
+    &-details {
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      font-size: 0.8em;
+
+      .author {
+        margin-right: 20px;
+      }
+    }
+
+    &-image {
+      margin: 20px auto;
+      width: 100%;
+      max-height: 500px;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    h1 {
+      &::after {
+        display: none;
+      }
+    }
+
+    article {
+      padding: 20px;
+    }
+
+    @media (max-width: $mobile) {
+      article {
+        padding: 0px;
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  margin: auto;
+  padding: 20px 30px;
+  max-width: $max-width;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+
+  &-wrapper {
+    width: 100%;
+
+    @include themify() {
+      background: themed("footer");
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .nav ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+
+    a {
+      margin: 0 20px;
+      display: block;
+    }
+  }
+
+  .credits {
+    margin-top: 25px;
+    flex: 0 0 100%;
+    line-height: 2em;
+    font-size: 0.85em;
+    text-align: center;
+  }
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .nav {
+      width: 100%;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+
+      li {
+        width: 100%;
+      }
+
+      a {
+        margin: 5px 0;
+        padding: 5px;
+      }
+    }
+
+    .credits {
+      width: 100%;
+    }
+  }
+}
