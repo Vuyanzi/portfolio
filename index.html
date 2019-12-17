@@ -249,7 +249,7 @@
             <section id="contact" class="contact">
                 <h1>Contact</h1>
                 <div class="author-contact">
-                    <div class="author-contact-form">
+                    <div class="author-contact-form" >
                         <form>
                             <div class="input-wrapper--outer">
                                 <div class="input-wrapper--inner-dent">
@@ -358,6 +358,36 @@
             </section>
         </div>
 
+        <!-- Floating contact me -->
+        <section id="floatingFormSection">
+            <div class="icon">
+                <span class="btn-primary" id="contactMe" title="Show Contact Form"><i class="fas fa-envelope fa-2x"></i></span>
+            </div>
+            <div class="icon">
+                <span class="btn-primary" id="closeForm" title="Close Contact Form"><i class="fas fa-times "></i></span>
+            </div>
+            <div class="author-contact-form" id="floatingForm">
+                <form>
+                    <div class="input-wrapper--outer">
+                        <div class="input-wrapper--inner-dent">
+                            <input type="text" name="fname" class="input" placeholder="First name">
+                        </div>
+                        <div class="input-wrapper--inner">
+                            <input type="text" name="lname" class="input" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="input-wrapper--inner">
+                        <input type="text" class="input" placeholder="Email">
+                    </div>
+                    <div class="input-wrapper--inner">
+                        <textarea name="message" class="input" cols="30" rows="10"
+                            placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn--rounded btn--half-fit">Send</button>
+                </form>
+            </div>
+        </section>
+
         <footer id="footer" class="footer-wrapper">
             <div class="footer">
                 <div class="logo">
@@ -381,6 +411,9 @@
     </div>
 
     <script type="module" src="./dist/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script  src="./dist/js/script.js"></script>
 </body>
 
 </html>
