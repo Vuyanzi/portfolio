@@ -2446,3 +2446,6 @@ hr {
 		padding: 10px!important
 	}
 }
+.small{
+	font-size: smaller;
+}
