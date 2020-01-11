@@ -21,7 +21,8 @@ html.transition :before {
 body {
 	font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    line-height: 1.5;
+	line-height: 1.5;
+	font-size: 20px;
 }
 
 [data-theme=light] body {
@@ -1368,7 +1369,7 @@ hr {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	max-width: 1400px;
+	max-width: fit-content;
 	overflow: hidden
 }
 
@@ -1921,6 +1922,11 @@ hr {
 		flex-direction: column
 	}
 }
+
+/* .content .about .author-about{
+	width: 800px;
+	margin: auto;
+} */
 
 @media(max-width:577px) {
 	.content .about .author-services {
